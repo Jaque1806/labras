@@ -351,7 +351,8 @@ img { max-width: 100%; }
 /* ── SHARED FEATURED PROJECT CARD ── */
 .brasileirinhos-card,
 .biblioteca-card,
-.bakesale-card {
+.bakesale-card,
+.encontro-card {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: 380px 1fr;
@@ -364,7 +365,8 @@ img { max-width: 100%; }
 /* Imagem padrão — largura fixa, altura 100% do card */
 .brasileirinhos-img,
 .biblioteca-img,
-.bakesale-img {
+.bakesale-img,
+.encontro-img {
   width: 380px;
   height: 100%;
   min-height: 400px;
@@ -376,6 +378,7 @@ img { max-width: 100%; }
 .brasileirinhos-img { background: #d6eef5; }
 .biblioteca-img     { background: #d6eef5; }
 .bakesale-img       { background: #fdf6ec; }
+.encontro-img       { background: #d6eef5; }
 
 /* ── BRASILEIRINHOS CARD ── */
 .brasileirinhos-card { border: 2px solid var(--green); }
@@ -425,10 +428,12 @@ img { max-width: 100%; }
 @media (max-width: 720px) {
   .brasileirinhos-card,
   .biblioteca-card,
-  .bakesale-card      { grid-template-columns: 1fr; min-height: unset; }
+  .bakesale-card,
+  .encontro-card      { grid-template-columns: 1fr; min-height: unset; }
   .brasileirinhos-img,
   .biblioteca-img,
-  .bakesale-img       { width: 100%; height: 240px; min-height: unset; }
+  .bakesale-img,
+  .encontro-img       { width: 100%; height: 240px; min-height: unset; }
 }
 
 /* ── MINI BIBLIOTECA CARD ── */
@@ -480,6 +485,139 @@ img { max-width: 100%; }
 @media (max-width: 720px) {
   .bakesale-card { grid-template-columns: 1fr; }
   .bakesale-img  { height: 240px; order: -1; }
+}
+
+/* ── ENCONTRO DE MAMÃES E BEBÊS CARD ── */
+.encontro-card { border: 2px solid #e91e8c; height: 400px; }
+.encontro-body {
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center;
+}
+.encontro-body h3 { font-size: 1.5rem; font-weight: 900; color: var(--blue); }
+.encontro-subtitle {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #e91e8c;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.encontro-body p { font-size: 0.95rem; color: var(--gray-700); line-height: 1.7; }
+
+@media (max-width: 720px) {
+  .encontro-card { grid-template-columns: 1fr; }
+  .encontro-img  { height: 240px; order: -1; }
+}
+
+/* ── FESTA JUNINA SLIDESHOW ── */
+.festa-junina-card {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 0;
+  align-items: center;
+}
+.festa-junina-card .event-info { padding: 32px 28px; }
+.fj-slideshow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 16px 16px 0;
+  height: 100%;
+}
+.fj-slide-wrap {
+  position: relative;
+  flex: 1;
+  height: 360px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #111;
+}
+.fj-slide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  cursor: zoom-in;
+  transition: opacity 0.3s ease;
+}
+.fj-slide-img.fading { opacity: 0; }
+.fj-counter {
+  position: absolute;
+  bottom: 10px; right: 12px;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 100px;
+  pointer-events: none;
+}
+.fj-prev, .fj-next {
+  background: var(--blue);
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  line-height: 1;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fj-prev:hover, .fj-next:hover { background: var(--blue-mid); }
+
+/* ── LIGHTBOX ── */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox.active { display: flex; }
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 88vh;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+}
+.lightbox-close {
+  position: absolute;
+  top: 20px; right: 24px;
+  background: none; border: none;
+  color: #fff; font-size: 2rem;
+  cursor: pointer; line-height: 1;
+}
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  background: rgba(255,255,255,0.15);
+  border: none; color: #fff;
+  font-size: 3rem; line-height: 1;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+.lightbox-prev { left: 20px; }
+.lightbox-next { right: 20px; }
+.lightbox-prev:hover,
+.lightbox-next:hover { background: rgba(255,255,255,0.3); }
+
+@media (max-width: 720px) {
+  .festa-junina-card { grid-template-columns: 1fr; }
+  .fj-slideshow { padding: 0 16px 16px; }
+  .fj-slide-wrap { height: 260px; }
 }
 
 /* ── PAST EVENTS ── */
@@ -794,7 +932,7 @@ img { max-width: 100%; }
   height: 52px;
   width: auto;
   object-fit: contain;
-  filter: brightness(0) invert(1) opacity(0.9);
+  filter: none;
 }
 .footer-links {
   display: flex;
